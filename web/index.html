@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open-QRCode Generator</title>
+</head>
+
+<body>
+    <div>
+        <label for="qrcode">Insira o conteúdo do seu QRCode:</label>
+        <input type="text" name="text" id="text">
+        <label for="size">Insira o tamanho desejado para sua imagem:</label>
+        <input type="number" name="size" id="size" value="128">
+        <button onclick="generate()">Gerar!</button>
+    </div>
+    <div id="qrcodeelement">
+    </div>
+
+    <script type="text/javascript">
+        var qrcodeElement = document.getElementById("qrcodeelement");
+
+        function generate() {
+            var text = document.getElementById("text").value;
+            var size = parseInt(document.getElementById("size").value);
+
+            // Limpa o elemento anterior
+            qrcodeElement.innerHTML = "";
+
+            // Cria um novo QRCode com o tamanho desejado
+            var qrcode = new QRCode(qrcodeElement, {
+                text: text,
+                width: size,
+                height: size,
+            });
+        }
+    </script>
+</body>
+
+</html>
